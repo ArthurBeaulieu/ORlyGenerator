@@ -11,6 +11,51 @@
 	<link href="img/logo.png" rel="icon" type="image/png">
 </head>
 <body>
+	<h1>O'Rly Generator</h1>
+	<h5><i>Update text, color and image to make the perfect O'Rly meme!</i></h5>
+	<div class="content-wrapper">
+		<!-- Meme preview and rendering section -->
+		<div class="preview">
+			<div id="output" class="preview-container">
+				<div id="preview-top-border" class="preview-top-border"></div>
+				<p id="preview-header" class="preview-header-text"></p>
+				<div class="preview-image-container">
+					<img src="img/animals/butterfly.jpg" id="main-image" alt="main-image">
+				</div>
+				<div id="preview-title-container" class="preview-title-container">
+					<p id="preview-title"></p>
+				</div>
+				<p id="preview-subtitle" class="preview-subtitle-text"></p>
+				<p class="orly-text">O&nbsp;RLY<sup id="orly-sup-text">?</sup></p>
+			</div>
+		</div>
+		<!-- Meme parametrization -->
+		<div class="parameters">
+			<label for="input-header">Header:</label>
+			<input id="input-header" type="text" name="input-header" value="It's only a clever hack if you're the one who wrote it">
+			<label for="input-title">Title:</label>
+			<input id="input-title" type="text" name="input-title" value="Hating Other People's Code">
+			<label for="input-subtitle">Subtitle:</label>
+			<input id="input-subtitle" type="text" name="input-subtitle" value="You ARE the alpha programmer">
+			<label for="input-color">Color:</label>
+			<input id="input-color" type="color" name="input-color" value="#FF0000">
+			<label for="select-image">Image:</label>
+			<select id="select-image" name="image-select">
+				<option value="butterfly">Butterfly</option>
+				<option value="cat">Cat</option>
+				<option value="horse">Horse</option>
+				<option value="owl">Owl</option>
+				<option value="parrot">Parrot</option>
+				<option value="tuna">Tuna</option>
+				<option value="turkey">Turkey</option>
+				<option value="turtle">Turtle</option>
+			</select>
+			<label for="flip-image">Flip image horizontally</label>
+			<input id="flip-image" type="checkbox" name="flip-image">
+			<button id="download">Download image</button>
+		</div>
+	</div>
 	<script type="text/javascript" src="js/app.js"></script>
+	<script async type="text/javascript" src="js/html2canvas.js"></script>
 </body>
 </html>

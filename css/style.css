@@ -20,3 +20,165 @@ body {
 p {
 	margin: 0;
 }
+
+:root {
+	--margin: 2rem;
+	--padding: 1rem;
+	/* Preview dimensions */
+	--size: 700px;
+	--ratio: 1.41421356237; /* sqrt(2) */
+	/* Container dimensions */
+	--title-container: 25%;
+	/* Text- dimensions */
+	--subtitle: 1.4rem;
+	--text: 1rem;
+}
+
+h1, h5 {
+	margin: calc(var(--text) / 6);
+}
+
+.content-wrapper {
+	display: flex;
+	height: 80%;
+	justify-content: center;
+	margin-top: var(--margin);
+	width: 80%;
+}
+
+.preview {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	text-align: center;
+	width: calc((var(--size) / var(--ratio)) + 10%);
+}
+
+.preview-container {
+	background-color: rgb(255, 255, 255);
+	font-family: serif;
+	height: var(--size);
+	position: relative;
+	width: calc(var(--size) / var(--ratio));
+}
+
+.preview-top-border {
+	background-color: red;
+	height: calc(var(--text) / 3);
+	margin: 0 auto;
+	width: 90%;
+}
+
+.preview-header-text {
+	font-style: italic;
+	font-size: var(--text);
+	height: var(--text); /* Mandatory to keep layout consistent with empty text */
+}
+
+.preview-image-container {
+	align-items: center;
+	display: flex;
+	height: calc(100% - var(--title-container) - (var(--text) - var(--text) / 3) - (2 * var(--margin)) + var(--subtitle) - (var(--text) + (2 * var(--margin))));
+	justify-content: center;
+	width: 100%;
+}
+
+.preview-image-container img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+.preview-title-container {
+	align-items: center;
+	background-color: red;
+	bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
+	display: flex;
+	height: var(--title-container);
+	justify-content: center;
+	margin-bottom: calc(var(--margin) / 4);
+	padding: var(--padding) var(--margin);
+	position: absolute;
+	text-align: left;
+	width: 100%;
+}
+
+.preview-title-container p {
+	color: white;
+	font-size: 3rem;
+}
+
+.preview-subtitle-text {
+	bottom: calc(var(--text) + (2 * var(--margin)));
+	font-size: var(--subtitle);
+	font-style: italic;
+	position: absolute;
+	right: var(--padding);
+	text-align: right;
+}
+
+.orly-text {
+	bottom: var(--margin);
+	font-family: sans-serif;
+	font-size: var(--text);
+	font-weight: bold;
+	left: var(--margin);
+	position: absolute;
+}
+
+.orly-text sup {
+	color: red;
+}
+
+.parameters {
+	margin: var(--margin) 0;
+	width: 20%;
+}
+
+label, input, select {
+	display: block;
+}
+
+label {
+	font-size: .9rem;
+	font-style: italic;
+}
+
+input, select {
+	margin-bottom: var(--text);
+	width: 60%;
+}
+
+input {
+	background: none;
+	border: none;
+	border-bottom: solid 1px rgb(142, 142, 142);
+	padding: .2rem 0;
+	transition: border-color .3s;
+}
+
+input[type="color"] {
+	border: solid 1px rgb(142, 142, 142);
+	padding: .2rem;
+}
+
+input:active,
+input:focus,
+input:hover {
+	border-color: #56D45B;
+}
+
+label[for="flip-image"], input[type="checkbox"] {
+	display: inline;
+	width: inherit;
+}
+
+button {
+	background: none;
+	border: solid 1px rgb(142, 142, 142);
+	border-radius: .3rem;
+	cursor: pointer;
+	padding: calc(var(--padding) / 4) var(--padding);
+	margin-top: var(--margin);
+}
+

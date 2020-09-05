@@ -35,31 +35,35 @@ colorPicker.addEventListener('input', () => {
   questionMark.style.color = colorPicker.value;
 });
 
-/* Image manipulation */
+/*  -----  Image manipulation  -----  */
 
 const image = document.getElementById('main-image');
 const imageSelect = document.getElementById('select-image');
 const imageFlip = document.getElementById('flip-image');
 
-image.crossOrigin = 'anonymous'; /* Set anonymous on image to allow local downloading */
 imageSelect.addEventListener('input', () => {
   image.src = `img/animals/${imageSelect.value}.jpg`;
 });
 
 imageFlip.addEventListener('click', () => {
-  const factor = imageFlip.checked ? -1 : 1;
-  image.style.transform = `scaleX(${factor})`;
+  image.style.transform = `scaleX(${imageFlip.checked ? -1 : 1})`;
 });
+
+/*  -----  Image downloading  -----  */
 
 const download = document.getElementById('download');
 download.addEventListener('click', () => {
+  image.crossOrigin = 'Anonymous'; /* Set anonymous on image to allow downloading on local web server */
   html2canvas(document.getElementById('output'), {
-    logging: false,
+    logging: true,
+    allowTaint: true,
+    useCORS: true,
     scale: 4
   }).then(canvas => {
     const link = document.createElement('A');
     link.download = 'orly-generated.png';
-    link.href = canvas.toDataURL('image/png');
+    link.href = canvas.toDataURL('image/png').replace("image/jpeg", "image/octet-stream");
     link.click();
+    setTimeout(() => { image.crossOrigin = null }, 100); /* Reset CORS policy to allow image swapping in UI */
   });
 });

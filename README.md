@@ -4,7 +4,7 @@ Want to make your own nerd O'Rly meme? You know, those ironic book covers that m
 There you go!
 
 <p>
-  <img src="/img/screenshots/demo.png" width="720"  alt="circle"/>
+  <img src="/img/screenshots/demo.png" width="960"  alt="circle"/>
 </p>
 
 Since I'm not a drawing artist, I took images from  [freepik](https://www.freepik.com/). Feel free to PR with more beasts to exhibit, but only if images are license free.

@@ -1,26 +1,3 @@
-* {
-	box-sizing: border-box;
-}
-
-html, body {
-	height: 100%;
-	margin: 0;
-	width: 100%;
-}
-
-body {
-	align-items: center;
-	background-image: radial-gradient(#EEE 0, #EAEAEA 15%, #FFF 60%);
-	display: flex;
-	flex-direction: column;
-	font-family: sans-serif;
-	justify-content: center;
-}
-
-p {
-	margin: 0;
-}
-
 :root {
 	--margin: 2rem;
 	--padding: 1rem;
@@ -32,6 +9,25 @@ p {
 	/* Text- dimensions */
 	--subtitle: 1.4rem;
 	--text: 1rem;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	align-items: center;
+	background-image: radial-gradient(#EEE 0, #EAEAEA 15%, #FFF 60%);
+	display: flex;
+	flex-direction: column;
+	font-family: sans-serif;
+	justify-content: center;
 }
 
 h1, h5 {
@@ -126,13 +122,18 @@ h1, h5 {
 	position: absolute;
 }
 
-.orly-text sup {
+sup {
 	color: red;
 }
 
 .parameters {
 	margin: var(--margin) 0;
 	width: 20%;
+}
+
+.param-title {
+	font-weight: bold;
+	margin-bottom: var(--margin);
 }
 
 label, input, select {
@@ -145,8 +146,9 @@ label {
 }
 
 input, select {
+	font-weight: bold;
 	margin-bottom: var(--text);
-	width: 60%;
+	width: 100%;
 }
 
 input {
@@ -155,11 +157,7 @@ input {
 	border-bottom: solid 1px rgb(142, 142, 142);
 	padding: .2rem 0;
 	transition: border-color .3s;
-}
-
-input[type="color"] {
-	border: solid 1px rgb(142, 142, 142);
-	padding: .2rem;
+	text-overflow: ellipsis;
 }
 
 input:active,
@@ -168,17 +166,39 @@ input:hover {
 	border-color: #56D45B;
 }
 
-label[for="flip-image"], input[type="checkbox"] {
-	display: inline;
-	width: inherit;
+input[type="color"] {
+	border: solid 1px rgb(142, 142, 142);
+	padding: .2rem;
+}
+
+label[for="flip-image"],
+label[for="v-flip-image"],
+label + img {
+	display: inline-block;
+	width: initial;
+}
+
+label + img {
+	cursor: pointer;
+	float: right;
+	height: var(--text);
+	vertical-align: bottom;
 }
 
 button {
-	background: none;
+	background-color: transparent;
 	border: solid 1px rgb(142, 142, 142);
 	border-radius: .3rem;
 	cursor: pointer;
-	padding: calc(var(--padding) / 4) var(--padding);
+	padding: calc(var(--padding) / 2);
 	margin-top: var(--margin);
+	transition: background-color .3s ease;
+	width: 100%;
+}
+
+button:active,
+button:focus,
+button:hover {
+	background-color: rgb(235, 235, 235);
 }
 

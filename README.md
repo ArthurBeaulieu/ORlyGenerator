@@ -8,6 +8,7 @@ There you go!
 </p>
 
 Since I'm not a drawing artist, I took images from  [freepik](https://www.freepik.com/). Feel free to PR with more beasts to exhibit, but only if images are license free.
+Icons are taken from [flaticon](https://www.flaticon.com/).
 
 You can save your creations thanks to [html2canvas](https://html2canvas.hertzen.com/), which draw DOM elements into a canvas you can use.
 If you want to use the downloading feature on a local environment, you may run a web server, or disable CORS temporarlly on your web browser.

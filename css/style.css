@@ -78,6 +78,7 @@ h1, h5 {
 	display: flex;
 	height: calc(100% - var(--title-container) - (var(--text) - var(--text) / 3) - (2 * var(--margin)) + var(--subtitle) - (var(--text) + (2 * var(--margin))));
 	justify-content: center;
+	padding: var(--padding);
 	width: 100%;
 }
 

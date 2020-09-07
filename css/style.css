@@ -1,4 +1,5 @@
 :root {
+	/* Global spacing */
 	--margin: 2rem;
 	--padding: 1rem;
 	/* Preview dimensions */
@@ -7,8 +8,11 @@
 	/* Container dimensions */
 	--title-container: 25%;
 	/* Text- dimensions */
+	--title: 3rem;
 	--subtitle: 1.4rem;
 	--text: 1rem;
+	/* Accent color*/
+	--color: #FF0000;
 }
 
 * {
@@ -30,7 +34,14 @@ body {
 	justify-content: center;
 }
 
-h1, h5 {
+a img {
+	border: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+h1 {
 	margin: calc(var(--text) / 6);
 }
 
@@ -38,11 +49,13 @@ h1, h5 {
 	display: flex;
 	height: 80%;
 	justify-content: center;
-	margin-top: var(--margin);
+	margin: 0 var(--margin);
 	width: 80%;
 }
 
-.preview {
+/* Preview container and content rules */
+
+.preview-container {
 	align-items: center;
 	display: flex;
 	height: 100%;
@@ -51,7 +64,7 @@ h1, h5 {
 	width: calc((var(--size) / var(--ratio)) + 10%);
 }
 
-.preview-container {
+.preview {
 	background-color: rgb(255, 255, 255);
 	box-shadow: 0 0 2rem rgb(225, 225, 225);
 	font-family: serif;
@@ -61,7 +74,7 @@ h1, h5 {
 }
 
 .preview-top-border {
-	background-color: red;
+	background-color: var(--color);
 	height: calc(var(--text) / 3);
 	margin: 0 auto;
 	width: 90%;
@@ -89,7 +102,7 @@ h1, h5 {
 
 .preview-title-container {
 	align-items: center;
-	background-color: red;
+	background-color: var(--color);
 	bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
 	display: flex;
 	height: var(--title-container);
@@ -103,7 +116,7 @@ h1, h5 {
 
 .preview-title-container p {
 	color: white;
-	font-size: 3rem;
+	font-size: var(--title);
 }
 
 .preview-subtitle-text {
@@ -115,7 +128,7 @@ h1, h5 {
 	text-align: right;
 }
 
-.orly-text {
+.preview-orly {
 	bottom: var(--margin);
 	font-family: sans-serif;
 	font-size: var(--text);
@@ -125,8 +138,18 @@ h1, h5 {
 }
 
 sup {
-	color: red;
+	color: var(--color);
 }
+
+.preview-signature-text {
+	bottom: var(--margin);
+	font-size: .9rem;
+	font-style: italic;
+	position: absolute;
+	right: var(--margin);
+}
+
+/* Personalization rules */
 
 .parameters {
 	margin: var(--margin) 0;
@@ -204,3 +227,47 @@ button:hover {
 	background-color: rgb(235, 235, 235);
 }
 
+/* Reponsive rules */
+
+@media screen and (max-width: 1000px) {
+	:root {
+		--title: 1.4rem;
+		--subtitle: 1rem;		
+		--text: .8rem;
+		--size: 450px;
+	}
+
+	body {
+		display: block;
+		padding: var(--padding) 0;
+		text-align: center;
+	}
+
+	a { /* Hide GitHub ribbon */
+		display: none;
+	}
+
+	h2 {
+		padding: 0 var(--padding);
+	}
+
+	.content-wrapper {
+		align-items: center;
+		flex-direction: column;
+		height: auto;
+		margin: var(--margin) auto;
+	}
+
+	.preview-container, .parameters {
+		width: 100%;
+	}
+
+	input, select {
+		text-align: center;
+	}
+
+	label[for="flip-image"],
+	label[for="v-flip-image"] {
+		float: left;
+	}
+}

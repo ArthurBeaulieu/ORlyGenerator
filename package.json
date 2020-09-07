@@ -1,0 +1,22 @@
+{
+  "name": "orlygenerator",
+  "version": "1.0",
+  "description": "O'Reilly books parodic meme generator! You know it right?",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -p 1337 -c-1 -o index.html"
+  },
+  "homepage": "https://github.com/ArthurBeaulieu/ORlyGenerator/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArthurBeaulieu/ORlyGenerator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArthurBeaulieu/ORlyGenerator/issues"
+  },
+  "author": "Arthur Beaulieu",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "http-server": "0.12.3"
+  }
+}

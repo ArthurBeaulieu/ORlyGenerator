@@ -12,7 +12,7 @@
 	--subtitle: 1.4rem;
 	--text: 1rem;
 	/* Accent color*/
-	--color: #FF0000;
+	--color: #55135D;
 }
 
 * {
@@ -156,9 +156,27 @@ sup {
 	width: 20%;
 }
 
-.param-title {
-	font-weight: bold;
-	margin-bottom: var(--margin);
+.param-predefined-colors {
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 1rem;
+}
+
+.param-predefined-colors div {
+	align-items: center;
+	border: solid 1px grey;
+	display: flex;
+	cursor: pointer;
+	height: 1.5rem;
+	justify-content: center;
+	margin: calc(var(--padding) * .2);
+	padding: 2px;
+	width: 1.5rem;
+}
+
+.param-predefined-colors div.selected, .params-input-color.selected {
+	border-color: var(--color);
+	box-shadow: 0 0 3px var(--color);
 }
 
 label, input, select {
@@ -193,7 +211,7 @@ input:hover {
 
 input[type="color"] {
 	border: solid 1px rgb(142, 142, 142);
-	padding: .2rem;
+	padding: 2px;
 }
 
 label[for="flip-image"],
@@ -247,7 +265,7 @@ button:hover {
 		display: none;
 	}
 
-	h2 {
+	h1 {
 		padding: 0 var(--padding);
 	}
 

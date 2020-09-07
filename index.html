@@ -11,7 +11,7 @@
 	<meta content="initial-scale=1" name="viewport">
 	<meta name="description" content="Generate a parodic O'Reilley book cover, you know, that nerd meme! Source code available at https://github.com/ArthurBeaulieu/ORlyGenerator">
 	<title>O'Rly Generator – 1.0</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/orlygenerator.css">
 	<link href="img/logo.png" rel="icon" type="image/png">
 </head>
 <body>
@@ -21,7 +21,6 @@
 </a>
 <!-- Title and subtitle -->
 <h1>O'Rly Generator</h1>
-<h2><i>Update text, color and image to make the perfect O'Rly meme!</i></h2>
 <!-- Page content (output and manipulation) -->
 <div class="content-wrapper">
 	<!-- Meme preview and rendering section -->
@@ -42,11 +41,28 @@
 	</div>
 	<!-- Meme parametrization -->
 	<div class="parameters">
-		<p class="param-title">Personalization</p>
-		<label for="input-color">Color:</label>
-		<input id="input-color" type="color" name="input-color">
-		<label for="input-header">Header:</label>
-		<input id="input-header" type="text" name="input-header" value="It's only a clever hack if you're the one who wrote it">
+		<label>Predefined color:</label>
+		<div id="predefined-colors" class="param-predefined-colors">
+			<div class="selected" data-value="#55135D"><img src="img/icons/colors/color0.svg" alt="color0"></div>
+			<div data-value="#71706E"><img src="img/icons/colors/color1.svg" alt="color1"></div>
+			<div data-value="#761b2A"><img src="img/icons/colors/color2.svg" alt="color2"></div>
+			<div data-value="#B80721"><img src="img/icons/colors/color3.svg" alt="color3"></div>
+			<div data-value="#65161C"><img src="img/icons/colors/color4.svg" alt="color4"></div>
+			<div data-value="#503DBD"><img src="img/icons/colors/color5.svg" alt="color5"></div>
+			<div data-value="#E11105"><img src="img/icons/colors/color6.svg" alt="color6"></div>
+			<div data-value="#067BB0"><img src="img/icons/colors/color7.svg" alt="color7"></div>
+			<div data-value="#F7B500"><img src="img/icons/colors/color8.svg" alt="color8"></div>
+			<div data-value="#000F76"><img src="img/icons/colors/color9.svg" alt="color9"></div>
+			<div data-value="#A8009B"><img src="img/icons/colors/color10.svg" alt="color10"></div>
+			<div data-value="#008445"><img src="img/icons/colors/color11.svg" alt="color11"></div>
+			<div data-value="#00999D"><img src="img/icons/colors/color12.svg" alt="color12"></div>
+			<div data-value="#014284"><img src="img/icons/colors/color13.svg" alt="color13"></div>
+			<div data-value="#B10034"><img src="img/icons/colors/color14.svg" alt="color14"></div>
+			<div data-value="#378E19"><img src="img/icons/colors/color15.svg" alt="color15"></div>
+			<div data-value="#859800"><img src="img/icons/colors/color16.svg" alt="color16"></div>
+		</div>
+		<label for="input-color">Custom color:</label>
+		<input id="input-color" class="params-input-color" type="color" name="input-color">
 		<label for="select-image">Spirit animal:</label>
 		<select id="select-image" name="image-select">
 			<option value="butterfly">🦋 Butterfly</option>
@@ -70,6 +86,8 @@
 		<label for="v-flip-image">Flip image vertically</label>
 		<img src="img/icons/v-flip.svg" id="v-flip-image" alt="v-flip-image">
 		<br><br> <!-- Since inline block for flip img, we need to line break manually -->
+		<label for="input-header">Header:</label>
+		<input id="input-header" type="text" name="input-header" value="It's only a clever hack if you're the one who wrote it">
 		<label for="input-title">Title:</label>
 		<input id="input-title" type="text" name="input-title" value="Hating Other People's Code">
 		<label for="input-subtitle">Subtitle:</label>
@@ -81,7 +99,7 @@
 </div>
 <!-- Credit footer -->
 <p><i>2020 – Arthur Beaulieu – License GPL-3.0</i></p>
-<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/orlygenerator.js"></script>
 <script async type="text/javascript" src="js/html2canvas.js"></script>
 </body>
 </html>

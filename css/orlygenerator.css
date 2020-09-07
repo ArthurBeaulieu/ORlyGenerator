@@ -6,7 +6,7 @@
 	--size: 700px;
 	--ratio: 1.41421356237; /* sqrt(2) */
 	/* Container dimensions */
-	--title-container: 25%;
+	--title-container: 8rem;
 	/* Text- dimensions */
 	--title: 3rem;
 	--subtitle: 1.4rem;
@@ -27,7 +27,7 @@ html, body {
 
 body {
 	align-items: center;
-	background-image: radial-gradient(#EEE 0, #EAEAEA 15%, #FFF 60%);
+	background-image: radial-gradient(#EEE 0, #EAEAEA 15%, #D0D0D0 60%);
 	display: flex;
 	flex-direction: column;
 	font-family: sans-serif;
@@ -106,7 +106,7 @@ h1 {
 	bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
 	display: flex;
 	height: var(--title-container);
-	justify-content: center;
+	justify-content: left;
 	margin-bottom: calc(var(--margin) / 4);
 	padding: var(--padding) var(--margin);
 	position: absolute;
@@ -184,6 +184,7 @@ label, input, select {
 }
 
 label {
+	color: #3C405D;
 	font-size: .9rem;
 	font-style: italic;
 }
@@ -230,19 +231,21 @@ label + img {
 
 button {
 	background-color: transparent;
-	border: solid 1px rgb(142, 142, 142);
+	border: solid 2px rgb(142, 142, 142);
 	border-radius: .3rem;
+	color: #3C405D;
 	cursor: pointer;
 	padding: calc(var(--padding) / 2);
 	margin-top: var(--margin);
-	transition: background-color .3s ease;
+	transition: background-color .3s ease, color .3s ease;
 	width: 100%;
 }
 
 button:active,
 button:focus,
 button:hover {
-	background-color: rgb(235, 235, 235);
+	background-color: #7DE484;
+	color: #21252B;
 }
 
 /* Reponsive rules */

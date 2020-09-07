@@ -1,7 +1,7 @@
 /*  -----  Text manipulation  -----  */
 
 // Method to init field in output and set listener on input
-const editTextListener = (value) => {
+const registerTextElement = (value) => {
   const element = document.getElementById(`preview-${value}`);
   const input = document.getElementById(`input-${value}`);
   const savedValue = localStorage.getItem(`input-${value}`);
@@ -15,13 +15,30 @@ const editTextListener = (value) => {
   input.addEventListener('input', () => {
     element.innerHTML = input.value;
     localStorage.setItem(`${input.name}`, input.value);
+    // Handle title container resize with letter count
+    if (element.id === 'preview-title') {
+      if (element.innerHTML.length > 50) {
+        document.body.style.setProperty('--title-container', '16rem');
+      } else if (element.innerHTML.length > 25) {
+        document.body.style.setProperty('--title-container', '12rem');
+      } else {
+        document.body.style.setProperty('--title-container', '8rem');
+      }
+    }
   });
 };
 // Make input fields interactive
-editTextListener('header'); // Header, italic on top of output
-editTextListener('title'); // Title, in colored jumbotron
-editTextListener('subtitle'); // Subtitle, right aligned under the jumbotron
-editTextListener('signature'); // Signature, right aligned under the subtitle
+registerTextElement('header'); // Header, italic on top of output
+registerTextElement('title'); // Title, in colored jumbotron
+registerTextElement('subtitle'); // Subtitle, right aligned under the jumbotron
+registerTextElement('signature'); // Signature, right aligned under the subtitle
+
+const element = document.getElementById('preview-title')
+if (element.innerHTML.length > 50) {
+  document.body.style.setProperty('--title-container', '16rem');
+} else if (element.innerHTML.length > 25) {
+  document.body.style.setProperty('--title-container', '12rem');
+}
 
 /*  -----  Color manipulation  -----  */
 

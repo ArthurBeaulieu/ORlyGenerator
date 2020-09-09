@@ -1,9 +1,12 @@
+'use strict';
+
 /*  -----  Text manipulation  -----  */
 
 // Method to init field in output and set listener on input
 const registerTextElement = (value) => {
   const element = document.getElementById(`preview-${value}`);
   const input = document.getElementById(`input-${value}`);
+  const label = input.previousElementSibling;
   const savedValue = localStorage.getItem(`input-${value}`);
   // Init element with its local storage value or its default value
   element.innerHTML = savedValue || input.value;
@@ -11,33 +14,68 @@ const registerTextElement = (value) => {
   if (savedValue) {
     input.value = savedValue;
   }
+  // Update letter counter for field
+  label.setAttribute('data-before', parseInt(label.dataset.maxlength) - input.value.length);      
   // Add listener to update output when typing
-  input.addEventListener('input', () => {
+  input.addEventListener('input', (event) => {
     element.innerHTML = input.value;
+    label.setAttribute('data-before', parseInt(label.dataset.maxlength) - input.value.length);
     localStorage.setItem(`${input.name}`, input.value);
     // Handle title container resize with letter count
     if (element.id === 'preview-title') {
-      if (element.innerHTML.length > 50) {
-        document.body.style.setProperty('--title-container', '16rem');
-      } else if (element.innerHTML.length > 25) {
-        document.body.style.setProperty('--title-container', '12rem');
-      } else {
-        document.body.style.setProperty('--title-container', '8rem');
-      }
+      updateTitleSize(element.innerHTML);
     }
   });
+};
+// Method to copute title container height according to text length
+const updateTitleSize = (text) => {
+  if (text.length > 40) {
+    document.body.style.setProperty('--title-container', '16rem');
+  } else if (text.length > 20) {
+    document.body.style.setProperty('--title-container', '12rem');
+  } else {
+    document.body.style.setProperty('--title-container', '8rem');
+  }  
 };
 // Make input fields interactive
 registerTextElement('header'); // Header, italic on top of output
 registerTextElement('title'); // Title, in colored jumbotron
 registerTextElement('subtitle'); // Subtitle, right aligned under the jumbotron
 registerTextElement('signature'); // Signature, right aligned under the subtitle
-
-const element = document.getElementById('preview-title')
-if (element.innerHTML.length > 50) {
-  document.body.style.setProperty('--title-container', '16rem');
-} else if (element.innerHTML.length > 25) {
-  document.body.style.setProperty('--title-container', '12rem');
+// Init title container size with stored text
+updateTitleSize(document.getElementById('preview-title').innerHTML);
+// Title align
+const titleAlign = [document.getElementById('l-align'), document.getElementById('c-align'), document.getElementById('r-align')];
+for (let i = 0; i < titleAlign.length; ++i) {
+  titleAlign[i].addEventListener('click', () => {
+      const title = document.getElementById('preview-title');
+      title.style.textAlign = titleAlign[i].alt.substr(0, titleAlign[i].alt.indexOf('-'));
+  });
+}
+// Subtitle alignement
+const subtitleAlign = [document.getElementById('bl-align'), document.getElementById('tl-align'), document.getElementById('tr-align'), document.getElementById('br-align')];
+for (let i = 0; i < subtitleAlign.length; ++i) {
+  subtitleAlign[i].addEventListener('click', () => {
+    // Align subtitle on the left or the right of the book cover
+    const subtitle = document.getElementById('preview-subtitle');    
+    const align = subtitleAlign[i].alt.substr(0, subtitleAlign[i].alt.indexOf('-'));
+    if (align[1] === 'l') {
+      subtitle.style.left = 'var(--padding)';
+      subtitle.style.right = 'inherit';
+    } else if (align[1] === 'r') {
+      subtitle.style.left = 'inherit';
+      subtitle.style.right = 'var(--padding)';
+    }
+    // Align subtitle on top or on bottom of title container
+    const titleContainer = document.getElementsByClassName('preview-title-container')[0];
+    if (align[0] === 't') {
+      titleContainer.style.bottom = 'calc(var(--text) + (var(--margin)) + var(--subtitle))';
+      subtitle.style.bottom = 'calc(var(--text) + (2 * var(--margin)) + var(--title-container))';
+    } else if (align[0] === 'b') {
+      titleContainer.style.bottom = 'calc(var(--text) + (2 * var(--margin)) + var(--subtitle))';      
+      subtitle.style.bottom = 'calc(var(--text) + (2 * var(--margin)))';
+    }
+  });
 }
 
 /*  -----  Color manipulation  -----  */
@@ -92,11 +130,11 @@ const imageVerticalFlip = document.getElementById('v-flip-image');
 // Init cover image if any in local storage
 if (localStorage.getItem('cover-image')) {
   imageSelect.value = localStorage.getItem('cover-image');
-  image.src = `img/animals/${imageSelect.value}.jpg`;
+  image.src = `assets/animals/${imageSelect.value}.webp`;
 }
 // Change animal on output
 imageSelect.addEventListener('input', () => {
-  image.src = `img/animals/${imageSelect.value}.jpg`;
+  image.src = `assets/animals/${imageSelect.value}.webp`;
   localStorage.setItem('cover-image', imageSelect.value);
 });
 let flipped = false;
@@ -138,4 +176,48 @@ download.addEventListener('click', () => {
     link.href = canvas.toDataURL('image/png');
     link.click();
   });
+});
+
+/* Random cover generator */
+
+// Store button and index to navigate trhough template array
+const browse = document.getElementById('browse');
+let index = 0;
+// Click event listener that iterates and update preview with template values
+browse.addEventListener('click', () => {
+  // Text update
+  document.getElementById('preview-header').innerHTML = TemplateCover[index].header;
+  document.getElementById('preview-title').innerHTML = TemplateCover[index].title;
+  document.getElementById('preview-subtitle').innerHTML = TemplateCover[index].subtitle;
+  // text input update
+  document.getElementById('input-header').value = TemplateCover[index].header;
+  document.getElementById('input-title').value = TemplateCover[index].title;
+  document.getElementById('input-subtitle').value = TemplateCover[index].subtitle;
+  // Update max length counter for each field
+  document.getElementById('input-header').previousElementSibling.setAttribute('data-before',
+    parseInt(document.getElementById('input-header').previousElementSibling.dataset.maxlength) - TemplateCover[index].header.length);
+  document.getElementById('input-title').previousElementSibling.setAttribute('data-before',
+    parseInt(document.getElementById('input-title').previousElementSibling.dataset.maxlength) - TemplateCover[index].title.length);
+  document.getElementById('input-subtitle').previousElementSibling.setAttribute('data-before',
+    parseInt(document.getElementById('input-subtitle').previousElementSibling.dataset.maxlength) - TemplateCover[index].subtitle.length);  
+  // Title scaling according to text length
+  updateTitleSize(TemplateCover[index].title);
+  // Color manipulation
+  document.body.style.setProperty('--color', TemplateCover[index].color);
+  for (let i = 0; i < colors.children.length; ++i) {
+    // In case any saved color in local storage
+    if (colors.children[i].dataset.value === TemplateCover[index].color) {
+      setColor(colors.children[i]);
+    }
+  }
+  // Image manipulation
+  image.src = `assets/animals/${TemplateCover[index].animal}.webp`;
+  imageSelect.value = TemplateCover[index].animal;  
+  // Save in local storage
+  localStorage.setItem('input-header', TemplateCover[index].header);
+  localStorage.setItem('input-title', TemplateCover[index].title);    
+  localStorage.setItem('input-subtitle', TemplateCover[index].subtitle);  
+  localStorage.setItem('cover-image', TemplateCover[index].animal);  
+  // Increment index depending on template covers length
+  index = (index + 1) % TemplateCover.length;
 });

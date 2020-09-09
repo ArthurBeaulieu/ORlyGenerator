@@ -1,5 +1,4 @@
 # npm ignored
 node_modules
-package-lock.json
 # jetbrain IDE ingored
 .idea

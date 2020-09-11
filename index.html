@@ -41,116 +41,118 @@
 	</div>
 	<!-- Meme parametrization -->
 	<div class="parameters">
-		<label>Predefined color:</label>
-		<div id="predefined-colors" class="param-predefined-colors">
-			<div class="selected" data-value="#55135D"><img src="assets/icons/colors/color0.svg" alt="color0"></div>
-			<div data-value="#71706E"><img src="assets/icons/colors/color1.svg" alt="color1"></div>
-			<div data-value="#761b2A"><img src="assets/icons/colors/color2.svg" alt="color2"></div>
-			<div data-value="#B80721"><img src="assets/icons/colors/color3.svg" alt="color3"></div>
-			<div data-value="#65161C"><img src="assets/icons/colors/color4.svg" alt="color4"></div>
-			<div data-value="#503DBD"><img src="assets/icons/colors/color5.svg" alt="color5"></div>
-			<div data-value="#E11105"><img src="assets/icons/colors/color6.svg" alt="color6"></div>
-			<div data-value="#067BB0"><img src="assets/icons/colors/color7.svg" alt="color7"></div>
-			<div data-value="#F7B500"><img src="assets/icons/colors/color8.svg" alt="color8"></div>
-			<div data-value="#000F76"><img src="assets/icons/colors/color9.svg" alt="color9"></div>
-			<div data-value="#A8009B"><img src="assets/icons/colors/color10.svg" alt="color10"></div>
-			<div data-value="#008445"><img src="assets/icons/colors/color11.svg" alt="color11"></div>
-			<div data-value="#00999D"><img src="assets/icons/colors/color12.svg" alt="color12"></div>
-			<div data-value="#014284"><img src="assets/icons/colors/color13.svg" alt="color13"></div>
-			<div data-value="#B10034"><img src="assets/icons/colors/color14.svg" alt="color14"></div>
-			<div data-value="#378E19"><img src="assets/icons/colors/color15.svg" alt="color15"></div>
-			<div data-value="#859800"><img src="assets/icons/colors/color16.svg" alt="color16"></div>
+		<div class="flex-wrapper">
+			<label>Predefined color:</label>
+			<div id="predefined-colors" class="param-predefined-colors">
+				<div class="selected" data-value="#55135D"><img src="assets/icons/colors/color0.svg" alt="color0"></div>
+				<div data-value="#71706E"><img src="assets/icons/colors/color1.svg" alt="color1"></div>
+				<div data-value="#761b2A"><img src="assets/icons/colors/color2.svg" alt="color2"></div>
+				<div data-value="#B80721"><img src="assets/icons/colors/color3.svg" alt="color3"></div>
+				<div data-value="#65161C"><img src="assets/icons/colors/color4.svg" alt="color4"></div>
+				<div data-value="#503DBD"><img src="assets/icons/colors/color5.svg" alt="color5"></div>
+				<div data-value="#E11105"><img src="assets/icons/colors/color6.svg" alt="color6"></div>
+				<div data-value="#067BB0"><img src="assets/icons/colors/color7.svg" alt="color7"></div>
+				<div data-value="#F7B500"><img src="assets/icons/colors/color8.svg" alt="color8"></div>
+				<div data-value="#000F76"><img src="assets/icons/colors/color9.svg" alt="color9"></div>
+				<div data-value="#A8009B"><img src="assets/icons/colors/color10.svg" alt="color10"></div>
+				<div data-value="#008445"><img src="assets/icons/colors/color11.svg" alt="color11"></div>
+				<div data-value="#00999D"><img src="assets/icons/colors/color12.svg" alt="color12"></div>
+				<div data-value="#014284"><img src="assets/icons/colors/color13.svg" alt="color13"></div>
+				<div data-value="#B10034"><img src="assets/icons/colors/color14.svg" alt="color14"></div>
+				<div data-value="#378E19"><img src="assets/icons/colors/color15.svg" alt="color15"></div>
+				<div data-value="#859800"><img src="assets/icons/colors/color16.svg" alt="color16"></div>
+			</div>
+			<label for="input-color">Custom color:</label>
+			<input id="input-color" class="params-input-color" type="color" name="input-color">
+			<label for="select-image">Spirit animal:</label>
+			<select id="select-image" name="image-select">
+				<option value="blank">None</option>
+				<option value="alligator">🐊 Alligator</option>
+				<option value="bat">🦇 Bat</option>
+				<option value="bear">🐻 Bear</option>
+				<option value="beaver">🐹 Beaver</option>
+				<option value="bull">🐄 Bull</option>
+				<option value="butterfly">🦋 Butterfly</option>
+				<option value="cat">🐈 Cat</option>
+				<option value="chameleon">🦎 Chameleon</option>
+				<option value="chronhist">🐡 Chronhist</option>
+				<option value="cow">🐄 Cow</option>
+				<option value="crab">🦀 Crab</option>
+				<option value="deer">🦌 Deer</option>
+				<option value="dog">🐕 Dog</option>
+				<option value="dog2">🐕 Dog 2</option>
+				<option value="donkey">🐎 Donkey</option>
+				<option value="elephant">🐘 Elephant</option>
+				<option value="flyingfish">🐟 Flying fish</option>
+				<option value="fox">🦊 Fox</option>
+				<option value="frog">🐸 Frog</option>
+				<option value="gerbil">🐹 Gerbil</option>
+				<option value="giraffe">🦒 Giraffe</option>
+				<option value="goose">🦢 Goose</option>
+				<option value="gorilla">🦍 Gorilla</option>
+				<option value="grumpycat">🐈 Grumpy cat</option>
+				<option value="horse">🐎 Horse</option>
+				<option value="jerboa">🐹 Jerboa</option>
+				<option value="jellyfish">🦑 Jellyfish</option>
+				<option value="kangaroo">🦘 Kangaroo</option>
+				<option value="koala">🐨 Koala</option>
+				<option value="lemur">🐒 Lemur</option>
+				<option value="llama">🦙 Llama</option>
+				<option value="lophius">🐟 Lophius</option>
+				<option value="octopus">🐙 Octopus</option>
+				<option value="orangutan">🦧 Orangutan</option>
+				<option value="ostrich">🦃 Ostrich</option>
+				<option value="otter">🦦 Otter</option>
+				<option value="owl">🦉 Owl</option>
+				<option value="parrot">🦜 Parrot</option>
+				<option value="penguin">🐧 Penguin</option>
+				<option value="pigeon">🐦 Pigeon</option>
+				<option value="pterodactyl">🦅 Pterodactyl</option>
+				<option value="puma">🐅 Puma</option>
+				<option value="racoon">🐹 Racoon</option>
+				<option value="rooster">🐓 Rooster</option>
+				<option value="scarab">🐞 Scarab</option>
+				<option value="shark">🦈 Shark</option>
+				<option value="sheatfish">🐟 Sheatfish</option>
+				<option value="spider">🕷️ Spider</option>
+				<option value="stingray">🐟 Stingray</option>
+				<option value="sunfish">🐟 Sunfish</option>
+				<option value="tiger">🐅 Tiger</option>
+				<option value="tuna">🐟 Tuna</option>
+				<option value="turkey">🦃 Turkey</option>
+				<option value="turtle">🐢 Turtle</option>
+				<option value="wasp">🐝 Wasp</option>
+				<option value="whale">🐳 Whale</option>
+				<option value="zebra">🦓 Zebra</option>
+			</select>
+			<label for="flip-image">Flip image horizontally</label>
+			<img src="assets/icons/flip.svg" id="flip-image" alt="flip-image">
+			<br> <!-- Since inline block for flip img, we need to line break manually -->
+			<label for="v-flip-image">Flip image vertically</label>
+			<img src="assets/icons/v-flip.svg" id="v-flip-image" alt="v-flip-image">
+			<br><br> <!-- Since inline block for flip img, we need to line break manually -->
+			<label for="input-header" data-maxlength="70">Header:</label>
+			<input id="input-header" type="text" name="input-header" maxlength="70" value="It's only a clever hack if you're the one who wrote it">
+			<label for="input-title" data-maxlength="64">Title:</label>
+			<input id="input-title" type="text" name="input-title" maxlength="64" value="Hating Other People's Code">
+			<div class="title-centering">
+				<img src="assets/icons/l-align.svg" id="l-align" alt="left-align">
+				<img src="assets/icons/c-align.svg" id="c-align" alt="center-align">
+				<img src="assets/icons/r-align.svg" id="r-align" alt="right-align">
+			</div>
+			<label for="input-subtitle" data-maxlength="70">Subtitle:</label>
+			<input id="input-subtitle" type="text" name="input-subtitle" maxlength="70" value="You ARE the alpha programmer">
+			<div class="subtitle-centering">
+				<img src="assets/icons/bl-align.svg" id="bl-align" alt="bl-align">
+				<img src="assets/icons/tl-align.svg" id="tl-align" alt="tl-align">
+				<img src="assets/icons/tr-align.svg" id="tr-align" alt="tr-align">
+				<img src="assets/icons/br-align.svg" id="br-align" alt="br-align">
+			</div>
+			<label for="input-signature" data-maxlength="60">Signature:</label>
+			<input id="input-signature" type="text" name="input-signature" maxlength="60" value="">
+			<button id="browse">Browse existing covers</button>
+			<button id="download">Download image</button>
 		</div>
-		<label for="input-color">Custom color:</label>
-		<input id="input-color" class="params-input-color" type="color" name="input-color">
-		<label for="select-image">Spirit animal:</label>
-		<select id="select-image" name="image-select">
-			<option value="blank">None</option>
-			<option value="alligator">🐊 Alligator</option>
-			<option value="bat">🦇 Bat</option>
-			<option value="bear">🐻 Bear</option>
-			<option value="beaver">🐹 Beaver</option>
-			<option value="bull">🐄 Bull</option>
-			<option value="butterfly">🦋 Butterfly</option>
-			<option value="cat">🐈 Cat</option>
-			<option value="chameleon">🦎 Chameleon</option>
-			<option value="chronhist">🐡 Chronhist</option>
-			<option value="cow">🐄 Cow</option>
-			<option value="crab">🦀 Crab</option>
-			<option value="deer">🦌 Deer</option>
-			<option value="dog">🐕 Dog</option>
-			<option value="dog2">🐕 Dog 2</option>
-			<option value="donkey">🐎 Donkey</option>
-			<option value="elephant">🐘 Elephant</option>
-			<option value="flyingfish">🐟 Flying fish</option>
-			<option value="fox">🦊 Fox</option>
-			<option value="frog">🐸 Frog</option>
-			<option value="gerbil">🐹 Gerbil</option>
-			<option value="giraffe">🦒 Giraffe</option>
-			<option value="goose">🦢 Goose</option>
-			<option value="gorilla">🦍 Gorilla</option>
-			<option value="grumpycat">🐈 Grumpy cat</option>
-			<option value="horse">🐎 Horse</option>
-			<option value="jerboa">🐹 Jerboa</option>
-			<option value="jellyfish">🦑 Jellyfish</option>
-			<option value="kangaroo">🦘 Kangaroo</option>
-			<option value="koala">🐨 Koala</option>
-			<option value="lemur">🐒 Lemur</option>
-			<option value="llama">🦙 Llama</option>
-			<option value="lophius">🐟 Lophius</option>
-			<option value="octopus">🐙 Octopus</option>
-			<option value="orangutan">🦧 Orangutan</option>
-			<option value="ostrich">🦃 Ostrich</option>
-			<option value="otter">🦦 Otter</option>
-			<option value="owl">🦉 Owl</option>			
-			<option value="parrot">🦜 Parrot</option>
-			<option value="penguin">🐧 Penguin</option>
-			<option value="pigeon">🐦 Pigeon</option>
-			<option value="pterodactyl">🦅 Pterodactyl</option>
-			<option value="puma">🐅 Puma</option>
-			<option value="racoon">🐹 Racoon</option>
-			<option value="rooster">🐓 Rooster</option>
-			<option value="scarab">🐞 Scarab</option>
-			<option value="shark">🦈 Shark</option>
-			<option value="sheatfish">🐟 Sheatfish</option>
-			<option value="spider">🕷️ Spider</option>
-			<option value="stingray">🐟 Stingray</option>
-			<option value="sunfish">🐟 Sunfish</option>
-			<option value="tiger">🐅 Tiger</option>
-			<option value="tuna">🐟 Tuna</option>
-			<option value="turkey">🦃 Turkey</option>
-			<option value="turtle">🐢 Turtle</option>
-			<option value="wasp">🐝 Wasp</option>
-			<option value="whale">🐳 Whale</option>
-			<option value="zebra">🦓 Zebra</option>
-		</select>
-		<label for="flip-image">Flip image horizontally</label>
-		<img src="assets/icons/flip.svg" id="flip-image" alt="flip-image">
-		<br> <!-- Since inline block for flip img, we need to line break manually -->
-		<label for="v-flip-image">Flip image vertically</label>
-		<img src="assets/icons/v-flip.svg" id="v-flip-image" alt="v-flip-image">
-		<br><br> <!-- Since inline block for flip img, we need to line break manually -->
-		<label for="input-header" data-maxlength="70">Header:</label>
-		<input id="input-header" type="text" name="input-header" maxlength="70" value="It's only a clever hack if you're the one who wrote it">
-		<label for="input-title" data-maxlength="64">Title:</label>
-		<input id="input-title" type="text" name="input-title" maxlength="64" value="Hating Other People's Code">
-		<div class="title-centering">
-			<img src="assets/icons/l-align.svg" id="l-align" alt="left-align">
-			<img src="assets/icons/c-align.svg" id="c-align" alt="center-align">
-			<img src="assets/icons/r-align.svg" id="r-align" alt="right-align">
-		</div>
-		<label for="input-subtitle" data-maxlength="70">Subtitle:</label>
-		<input id="input-subtitle" type="text" name="input-subtitle" maxlength="70" value="You ARE the alpha programmer">
-		<div class="subtitle-centering">
-			<img src="assets/icons/bl-align.svg" id="bl-align" alt="bl-align">
-			<img src="assets/icons/tl-align.svg" id="tl-align" alt="tl-align">
-			<img src="assets/icons/tr-align.svg" id="tr-align" alt="tr-align">
-			<img src="assets/icons/br-align.svg" id="br-align" alt="br-align">
-		</div>
-		<label for="input-signature" data-maxlength="60">Signature:</label>
-		<input id="input-signature" type="text" name="input-signature" maxlength="60" value="">
-		<button id="browse">Browse existing covers</button>
-		<button id="download">Download image</button>
 	</div>
 </div>
 <!-- Credit footer -->

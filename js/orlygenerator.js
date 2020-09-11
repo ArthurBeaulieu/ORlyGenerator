@@ -46,35 +46,61 @@ registerTextElement('signature'); // Signature, right aligned under the subtitle
 updateTitleSize(document.getElementById('preview-title').innerHTML);
 // Title align
 const titleAlign = [document.getElementById('l-align'), document.getElementById('c-align'), document.getElementById('r-align')];
+const initIndexTI = localStorage.getItem('title-align') ? localStorage.getItem('title-align') : 0;
+let currentTitleAlign = titleAlign[initIndexTI];
+// Util method to update local storage while changing title align
+const setTitleAlign = (element, i) => {
+  const title = document.getElementById('preview-title');
+  title.style.textAlign = element.alt.substr(0, element.alt.indexOf('-'));
+  currentTitleAlign.classList.remove('selected');
+  currentTitleAlign = element;
+  currentTitleAlign.classList.add('selected');
+  localStorage.setItem('title-align', `${i}`);
+};
+// Init align
+setTitleAlign(currentTitleAlign, initIndexTI);
+// Iterate over choices to make them interactive
 for (let i = 0; i < titleAlign.length; ++i) {
   titleAlign[i].addEventListener('click', () => {
-      const title = document.getElementById('preview-title');
-      title.style.textAlign = titleAlign[i].alt.substr(0, titleAlign[i].alt.indexOf('-'));
+    setTitleAlign(titleAlign[i], i);
   });
 }
-// Subtitle alignement
+// Subtitle align
 const subtitleAlign = [document.getElementById('bl-align'), document.getElementById('tl-align'), document.getElementById('tr-align'), document.getElementById('br-align')];
+const initIndexSI = localStorage.getItem('subtitle-align') ? localStorage.getItem('subtitle-align') : 3;
+let currentSubtitleAlign = subtitleAlign[initIndexSI];
+// Util method to update local storage while changing subtitle position
+const setSubtitleAlign = (element, i) => {
+  // Align subtitle on the left or the right of the book cover
+  const subtitle = document.getElementById('preview-subtitle');
+  const align = element.alt.substr(0, element.alt.indexOf('-'));
+  if (align[1] === 'l') {
+    subtitle.style.left = 'var(--padding)';
+    subtitle.style.right = 'inherit';
+  } else if (align[1] === 'r') {
+    subtitle.style.left = 'inherit';
+    subtitle.style.right = 'var(--padding)';
+  }
+  // Align subtitle on top or on bottom of title container
+  const titleContainer = document.getElementsByClassName('preview-title-container')[0];
+  if (align[0] === 't') {
+    titleContainer.style.bottom = 'calc(var(--text) + (var(--margin)) + var(--subtitle))';
+    subtitle.style.bottom = 'calc(var(--text) + (2 * var(--margin)) + var(--title-container))';
+  } else if (align[0] === 'b') {
+    titleContainer.style.bottom = 'calc(var(--text) + (2 * var(--margin)) + var(--subtitle))';
+    subtitle.style.bottom = 'calc(var(--text) + (2 * var(--margin)))';
+  }
+  currentSubtitleAlign.classList.remove('selected');
+  currentSubtitleAlign = element;
+  currentSubtitleAlign.classList.add('selected');
+  localStorage.setItem('subtitle-align', `${i}`);
+};
+// Init align
+setSubtitleAlign(currentSubtitleAlign, initIndexSI);
+// Iterate over choices to make them interactive
 for (let i = 0; i < subtitleAlign.length; ++i) {
   subtitleAlign[i].addEventListener('click', () => {
-    // Align subtitle on the left or the right of the book cover
-    const subtitle = document.getElementById('preview-subtitle');    
-    const align = subtitleAlign[i].alt.substr(0, subtitleAlign[i].alt.indexOf('-'));
-    if (align[1] === 'l') {
-      subtitle.style.left = 'var(--padding)';
-      subtitle.style.right = 'inherit';
-    } else if (align[1] === 'r') {
-      subtitle.style.left = 'inherit';
-      subtitle.style.right = 'var(--padding)';
-    }
-    // Align subtitle on top or on bottom of title container
-    const titleContainer = document.getElementsByClassName('preview-title-container')[0];
-    if (align[0] === 't') {
-      titleContainer.style.bottom = 'calc(var(--text) + (var(--margin)) + var(--subtitle))';
-      subtitle.style.bottom = 'calc(var(--text) + (2 * var(--margin)) + var(--title-container))';
-    } else if (align[0] === 'b') {
-      titleContainer.style.bottom = 'calc(var(--text) + (2 * var(--margin)) + var(--subtitle))';      
-      subtitle.style.bottom = 'calc(var(--text) + (2 * var(--margin)))';
-    }
+    setSubtitleAlign(subtitleAlign[i], i);
   });
 }
 

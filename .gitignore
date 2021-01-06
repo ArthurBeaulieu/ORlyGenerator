@@ -1,4 +1,2 @@
-# npm ignored
 node_modules
-# jetbrain IDE ingored
 .idea

@@ -3,7 +3,7 @@
 /*  -----  Text manipulation  -----  */
 
 // Method to init field in output and set listener on input
-const registerTextElement = (value) => {
+const registerTextElement = value => {
   const element = document.getElementById(`preview-${value}`);
   const input = document.getElementById(`input-${value}`);
   const label = input.previousElementSibling;
@@ -15,9 +15,9 @@ const registerTextElement = (value) => {
     input.value = savedValue;
   }
   // Update letter counter for field
-  label.setAttribute('data-before', parseInt(label.dataset.maxlength) - input.value.length);      
+  label.setAttribute('data-before', parseInt(label.dataset.maxlength) - input.value.length);
   // Add listener to update output when typing
-  input.addEventListener('input', (event) => {
+  input.addEventListener('input', event => {
     element.innerHTML = input.value;
     label.setAttribute('data-before', parseInt(label.dataset.maxlength) - input.value.length);
     localStorage.setItem(`${input.name}`, input.value);
@@ -28,14 +28,14 @@ const registerTextElement = (value) => {
   });
 };
 // Method to copute title container height according to text length
-const updateTitleSize = (text) => {
+const updateTitleSize = text => {
   if (text.length > 40) {
     document.body.style.setProperty('--title-container', '16rem');
   } else if (text.length > 20) {
     document.body.style.setProperty('--title-container', '12rem');
   } else {
     document.body.style.setProperty('--title-container', '8rem');
-  }  
+  }
 };
 // Make input fields interactive
 registerTextElement('header'); // Header, italic on top of output
@@ -51,7 +51,7 @@ let currentTitleAlign = titleAlign[initIndexTI];
 // Util method to update local storage while changing title align
 const setTitleAlign = (element, i) => {
   const title = document.getElementById('preview-title');
-  title.style.textAlign = element.alt.substr(0, element.alt.indexOf('-'));
+  title.style.textAlign = element.getAttribute('alt').substr(0, element.getAttribute('alt').indexOf('-'));
   currentTitleAlign.classList.remove('selected');
   currentTitleAlign = element;
   currentTitleAlign.classList.add('selected');
@@ -73,7 +73,7 @@ let currentSubtitleAlign = subtitleAlign[initIndexSI];
 const setSubtitleAlign = (element, i) => {
   // Align subtitle on the left or the right of the book cover
   const subtitle = document.getElementById('preview-subtitle');
-  const align = element.alt.substr(0, element.alt.indexOf('-'));
+  const align = element.getAttribute('alt').substr(0, element.getAttribute('alt').indexOf('-'));
   if (align[1] === 'l') {
     subtitle.style.left = 'var(--padding)';
     subtitle.style.right = 'inherit';
@@ -107,7 +107,7 @@ for (let i = 0; i < subtitleAlign.length; ++i) {
 /*  -----  Color manipulation  -----  */
 
 // Method to update css classes on color element when toggled
-const setColor = (element) => {
+const setColor = element => {
   selectedColor.classList.remove('selected');
   selectedColor = element;
   element.classList.add('selected');
@@ -170,20 +170,32 @@ imageFlip.addEventListener('click', () => {
   flipped = !flipped
   image.style.transform = `scaleX(${flipped ? -1 : 1}) scaleY(${vFlipped ? -1 : 1})`;
   localStorage.setItem('cover-flip', `${flipped}`);
+  if (flipped) {
+    imageFlip.classList.add('selected');
+  } else {
+    imageFlip.classList.remove('selected');
+  }
 });
 imageVerticalFlip.addEventListener('click', () => {
   vFlipped = !vFlipped;
   image.style.transform = `scaleX(${flipped ? -1 : 1}) scaleY(${vFlipped ? -1 : 1})`;
   localStorage.setItem('cover-vflip', `${vFlipped}`);
+  if (vFlipped) {
+    imageVerticalFlip.classList.add('selected');
+  } else {
+    imageVerticalFlip.classList.remove('selected');
+  }
 });
 // Init both with local storage value if any
 if (localStorage.getItem('cover-flip') === 'true') {
   flipped = true;
   image.style.transform = `scaleX(${flipped ? -1 : 1}) scaleY(${vFlipped ? -1 : 1})`;
+  imageFlip.classList.add('selected');
 }
 if (localStorage.getItem('cover-vflip') === 'true') {
   vFlipped = true;
   image.style.transform = `scaleX(${flipped ? -1 : 1}) scaleY(${vFlipped ? -1 : 1})`;
+  imageVerticalFlip.classList.add('selected');
 }
 
 /*  -----  Image downloading  -----  */
@@ -191,6 +203,7 @@ if (localStorage.getItem('cover-vflip') === 'true') {
 // Convert output DOM element into an image that is downloaded from current browser
 const download = document.getElementById('download');
 download.addEventListener('click', () => {
+  document.body.style.setProperty('--transition', '0');
   // Execute html2canvas with output div
   html2canvas(document.getElementById('output'), {
     logging: false, // Make html2canvas silent on execution
@@ -201,6 +214,7 @@ download.addEventListener('click', () => {
     link.download = 'orly-generator.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
+    document.body.style.setProperty('--transition', '.6s');
   });
 });
 
@@ -225,7 +239,7 @@ browse.addEventListener('click', () => {
   document.getElementById('input-title').previousElementSibling.setAttribute('data-before',
     parseInt(document.getElementById('input-title').previousElementSibling.dataset.maxlength) - TemplateCover[index].title.length);
   document.getElementById('input-subtitle').previousElementSibling.setAttribute('data-before',
-    parseInt(document.getElementById('input-subtitle').previousElementSibling.dataset.maxlength) - TemplateCover[index].subtitle.length);  
+    parseInt(document.getElementById('input-subtitle').previousElementSibling.dataset.maxlength) - TemplateCover[index].subtitle.length);
   // Title scaling according to text length
   updateTitleSize(TemplateCover[index].title);
   // Color manipulation
@@ -238,12 +252,12 @@ browse.addEventListener('click', () => {
   }
   // Image manipulation
   image.src = `assets/animals/${TemplateCover[index].animal}.webp`;
-  imageSelect.value = TemplateCover[index].animal;  
+  imageSelect.value = TemplateCover[index].animal;
   // Save in local storage
   localStorage.setItem('input-header', TemplateCover[index].header);
-  localStorage.setItem('input-title', TemplateCover[index].title);    
-  localStorage.setItem('input-subtitle', TemplateCover[index].subtitle);  
-  localStorage.setItem('cover-image', TemplateCover[index].animal);  
+  localStorage.setItem('input-title', TemplateCover[index].title);
+  localStorage.setItem('input-subtitle', TemplateCover[index].subtitle);
+  localStorage.setItem('cover-image', TemplateCover[index].animal);
   // Increment index depending on template covers length
   index = (index + 1) % TemplateCover.length;
 });

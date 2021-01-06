@@ -13,6 +13,8 @@
 	--text: 1rem;
 	/* Accent color*/
 	--color: #55135D;
+	/* Transition duraction */
+	--transition: .6s;
 }
 
 * {
@@ -27,7 +29,8 @@ html, body {
 
 body {
 	align-items: center;
-	background-image: radial-gradient(#EEE 0, #EAEAEA 15%, #D0D0D0 60%);
+	background-color: black;
+	background-image: radial-gradient(ellipse at left, var(--color) -50%, transparent), radial-gradient(ellipse at right, var(--color) -50%, transparent);
 	display: flex;
 	flex-direction: column;
 	font-family: sans-serif;
@@ -42,7 +45,13 @@ a img {
 }
 
 h1 {
+	color: white;
 	margin: calc(var(--text) / 6);
+}
+
+p i {
+	color: white;
+	font-size: .9rem;
 }
 
 .content-wrapper {
@@ -67,7 +76,7 @@ h1 {
 
 .preview {
 	background-color: rgb(255, 255, 255);
-	box-shadow: 0 0 2rem rgb(225, 225, 225);
+	box-shadow: 0 0 .4rem rgba(225, 225, 225, .6);
 	font-family: serif;
 	height: var(--size);
 	position: relative;
@@ -79,6 +88,7 @@ h1 {
 	height: calc(var(--text) / 3);
 	margin: 0 auto;
 	width: 90%;
+	transition: background-color var(--transition);
 }
 
 .preview-header-text {
@@ -113,6 +123,7 @@ h1 {
 	position: absolute;
 	text-align: left;
 	width: 100%;
+	transition: background-color var(--transition);
 }
 
 .preview-title-container p {
@@ -140,6 +151,7 @@ h1 {
 
 sup {
 	color: var(--color);
+	transition: color var(--transition);
 }
 
 .preview-signature-text {
@@ -182,7 +194,7 @@ sup {
 	width: 1.5rem;
 }
 
-.param-predefined-colors div img {
+.param-predefined-colors div svg {
 	height: 100%;
 }
 
@@ -197,8 +209,10 @@ label, input, select {
 
 label {
 	color: #3C405D;
+	display: flex;
 	font-size: .9rem;
 	font-style: italic;
+	margin-bottom: .3rem;
 	position: relative;
 }
 
@@ -213,14 +227,14 @@ input {
 	border: none;
 	border-bottom: solid 1px rgb(142, 142, 142);
 	padding: .2rem 0;
-	transition: border-color .3s;
+	transition: border-color var(--transition);
 	text-overflow: ellipsis;
 }
 
 input:active,
 input:focus,
 input:hover {
-	border-color: #56D45B;
+	border-color: var(--color);
 }
 
 input[type="color"] {
@@ -229,13 +243,12 @@ input[type="color"] {
 }
 
 label[for="flip-image"],
-label[for="v-flip-image"],
-label + img {
+label[for="v-flip-image"] {
 	display: inline-block;
 	width: initial;
 }
 
-label + img {
+label + svg {
 	cursor: pointer;
 	float: right;
 	height: var(--text);
@@ -251,28 +264,25 @@ label[data-maxlength]:before {
 	top: 1.4rem;
 }
 
-input[name="input-title"],
-input[name="input-subtitle"] {
-	margin-bottom: calc(var(--margin) / 4);
-}
-
-.title-centering, 
+.title-centering,
 .subtitle-centering {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: var(--padding);	
+	margin-left: auto;
 }
 
-.title-centering img,
-.subtitle-centering img {
+.title-centering svg,
+.subtitle-centering svg {
 	cursor: pointer;
-	height: 1rem;
-	transition: filter .3s;
+	height: .9rem;
+	margin-left: 1rem;
+	transition: fill var(--transition);
 }
 
-.title-centering img.selected,
-.subtitle-centering img.selected {
-	filter: invert(84%) sepia(10%) saturate(2897%) hue-rotate(64deg) brightness(88%) contrast(88%);
+label + svg.selected,
+.title-centering svg.selected,
+.subtitle-centering svg.selected {
+	fill: var(--color);
 }
 
 button {
@@ -281,9 +291,9 @@ button {
 	border-radius: .3rem;
 	color: #3C405D;
 	cursor: pointer;
-	margin-top: var(--padding);	
+	margin-top: calc(var(--padding) / 2);
 	padding: calc(var(--padding) / 2);
-	transition: background-color .3s ease, color .3s ease;
+	transition: background-color var(--transition) ease, color var(--transition) ease;
 	width: 100%;
 }
 
@@ -304,7 +314,7 @@ button:hover {
 @media screen and (max-width: 1000px) {
 	:root {
 		--title: 1.4rem;
-		--subtitle: 1rem;		
+		--subtitle: 1rem;
 		--text: .8rem;
 		--size: 450px;
 	}

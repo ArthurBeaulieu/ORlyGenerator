@@ -1,360 +1,371 @@
 :root {
-	/* Global spacing */
-	--margin: 2rem;
-	--padding: 1rem;
-	/* Preview dimensions */
-	--size: 700px;
-	--ratio: 1.41421356237; /* sqrt(2) */
-	/* Container dimensions */
-	--title-container: 8rem;
-	/* Text- dimensions */
-	--title: 3rem;
-	--subtitle: 1.4rem;
-	--text: 1rem;
-	/* Accent color*/
-	--color: #55135D;
-	/* Transition duraction */
-	--transition: .6s;
+  /* Global spacing */
+  --margin: 2rem;
+  --padding: 1rem;
+  /* Preview dimensions */
+  --size: 700px;
+  --ratio: 1.41421356237; /* sqrt(2) */
+  /* Container dimensions */
+  --title-container: 8rem;
+  /* Text- dimensions */
+  --title: 3rem;
+  --title-line-height: 3.5rem;
+  --subtitle: 1.4rem;
+  --text: 1rem;
+  /* Accent color*/
+  --color: #55135D;
+  /* Transition duraction */
+  --transition: .6s;
 }
 
 * {
-	box-sizing: border-box;
-	margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 html, body {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
-	align-items: center;
-	background-color: black;
-	background-image: radial-gradient(ellipse at left, var(--color) -50%, transparent), radial-gradient(ellipse at right, var(--color) -50%, transparent);
-	display: flex;
-	flex-direction: column;
-	font-family: sans-serif;
-	justify-content: center;
+  align-items: center;
+  background-color: black;
+  background-image: radial-gradient(ellipse at left, var(--color) -50%, transparent), radial-gradient(ellipse at right, var(--color) -50%, transparent);
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  justify-content: center;
 }
 
 a img {
-	border: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
+  border: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 h1 {
-	color: white;
-	margin: calc(var(--text) / 6);
+  color: white;
+  margin: calc(var(--text) / 6);
 }
 
 p i {
-	color: white;
-	font-size: .9rem;
+  color: white;
+  font-size: .9rem;
 }
 
 .content-wrapper {
-	align-items: center;
-	display: flex;
-	height: 80%;
-	justify-content: center;
-	margin: 0 var(--margin);
-	width: 100%;
+  align-items: center;
+  display: flex;
+  height: 80%;
+  justify-content: center;
+  margin: 0 var(--margin);
+  width: 100%;
 }
 
 /* Preview container and content rules */
 
 .preview-container {
-	align-items: center;
-	display: flex;
-	height: 100%;
-	justify-content: center;
-	text-align: center;
-	width: calc((var(--size) / var(--ratio)) + 10%);
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  width: calc((var(--size) / var(--ratio)) + 10%);
 }
 
 .preview {
-	background-color: rgb(255, 255, 255);
-	box-shadow: 0 0 .4rem rgba(225, 225, 225, .6);
-	font-family: serif;
-	height: var(--size);
-	position: relative;
-	width: calc(var(--size) / var(--ratio));
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 .4rem rgba(225, 225, 225, .6);
+  font-family: serif;
+  height: var(--size);
+  position: relative;
+  width: calc(var(--size) / var(--ratio));
 }
 
 .preview-top-border {
-	background-color: var(--color);
-	height: calc(var(--text) / 3);
-	margin: 0 auto;
-	width: 90%;
-	transition: background-color var(--transition);
+  background-color: var(--color);
+  height: calc(var(--text) / 3);
+  margin: 0 auto;
+  width: 90%;
+  transition: background-color var(--transition);
 }
 
 .preview-header-text {
-	font-style: italic;
-	font-size: var(--text);
-	height: var(--text); /* Mandatory to keep layout consistent with empty text */
+  font-style: italic;
+  font-size: var(--text);
+  height: var(--text); /* Mandatory to keep layout consistent with empty text */
 }
 
 .preview-image-container {
-	align-items: center;
-	display: flex;
-	height: calc(100% - var(--title-container) - (var(--text) - var(--text) / 3) - (2 * var(--margin)) + var(--subtitle) - (var(--text) + (2 * var(--margin))));
-	justify-content: center;
-	padding: var(--padding);
-	width: 100%;
+  align-items: center;
+  display: flex;
+  height: calc(100% - var(--title-container) - (var(--text) - var(--text) / 3) - (2 * var(--margin)) + var(--subtitle) - (var(--text) + (2 * var(--margin))));
+  justify-content: center;
+  padding: var(--padding);
+  width: 100%;
 }
 
 .preview-image-container img {
-	max-height: 100%;
-	max-width: 100%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .preview-title-container {
-	align-items: center;
-	background-color: var(--color);
-	bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
-	display: flex;
-	height: var(--title-container);
-	justify-content: left;
-	margin-bottom: calc(var(--margin) / 4);
-	padding: var(--padding) var(--margin);
-	position: absolute;
-	text-align: left;
-	width: 100%;
-	transition: background-color var(--transition);
+  align-items: center;
+  background-color: var(--color);
+  bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
+  display: flex;
+  height: var(--title-container);
+  justify-content: left;
+  margin-bottom: calc(var(--margin) / 4);
+  padding: var(--padding) var(--margin);
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  transition: background-color var(--transition);
 }
 
 .preview-title-container p {
-	color: white;
-	font-size: var(--title);
+  color: white;
+  font-size: var(--title);
+  line-height: var(--title-line-height)
 }
 
 .preview-subtitle-text {
-	bottom: calc(var(--text) + (2 * var(--margin)));
-	font-size: var(--subtitle);
-	font-style: italic;
-	position: absolute;
-	right: var(--padding);
-	text-align: right;
+  bottom: calc(var(--text) + (2 * var(--margin)));
+  font-size: var(--subtitle);
+  font-style: italic;
+  position: absolute;
+  right: var(--padding);
+  text-align: right;
 }
 
 .preview-orly {
-	bottom: var(--margin);
-	font-family: sans-serif;
-	font-size: var(--text);
-	font-weight: bold;
-	left: var(--margin);
-	position: absolute;
+  bottom: var(--margin);
+  font-family: sans-serif;
+  font-size: var(--text);
+  font-weight: bold;
+  left: var(--margin);
+  position: absolute;
 }
 
 sup {
-	color: var(--color);
-	transition: color var(--transition);
+  color: var(--color);
+  transition: color var(--transition);
 }
 
 .preview-signature-text {
-	bottom: var(--margin);
-	font-size: .9rem;
-	font-style: italic;
-	position: absolute;
-	right: var(--margin);
+  bottom: var(--margin);
+  font-size: .9rem;
+  font-style: italic;
+  position: absolute;
+  right: var(--margin);
 }
 
 /* Personalization rules */
 
 .parameters {
-	align-items: center;
-	background-color: rgb(250, 250, 250);
-	border-radius: 5px;
-	display: flex;
-	justify-content: center;
-	margin: var(--margin) 0;
-	max-width: 445px;
-	padding: calc(var(--margin) / 1.3);
-	width: 30%;
+  align-items: center;
+  background-color: rgb(250, 250, 250);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  margin: var(--margin) 0;
+  max-width: 445px;
+  padding: calc(var(--margin) / 1.3);
+  width: 30%;
 }
 
 .param-predefined-colors {
-	display: flex;
-	flex-wrap: wrap;
-	margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .param-predefined-colors div {
-	align-items: center;
-	border: solid 1px grey;
-	display: flex;
-	cursor: pointer;
-	height: 1.5rem;
-	justify-content: center;
-	margin: calc(var(--padding) * .2);
-	padding: 2px;
-	width: 1.5rem;
+  align-items: center;
+  border: solid 1px grey;
+  display: flex;
+  cursor: pointer;
+  height: 1.5rem;
+  justify-content: center;
+  margin: calc(var(--padding) * .2);
+  padding: 2px;
+  width: 1.5rem;
 }
 
 .param-predefined-colors div svg {
-	height: 100%;
+  height: 100%;
 }
 
 .param-predefined-colors div.selected, .params-input-color.selected {
-	border-color: var(--color);
-	box-shadow: 0 0 3px var(--color);
+  border-color: var(--color);
+  box-shadow: 0 0 3px var(--color);
 }
 
 label, input, select {
-	display: block;
+  display: block;
 }
 
 label {
-	color: #3C405D;
-	display: flex;
-	font-size: .9rem;
-	font-style: italic;
-	margin-bottom: .3rem;
-	position: relative;
+  color: #3C405D;
+  display: flex;
+  font-size: .9rem;
+  font-style: italic;
+  margin-bottom: .3rem;
+  position: relative;
 }
 
 input, select {
-	font-weight: bold;
-	margin-bottom: var(--text);
-	width: 100%;
+  font-weight: bold;
+  margin-bottom: var(--text);
+  width: 100%;
 }
 
 input {
-	background: none;
-	border: none;
-	border-bottom: solid 1px rgb(142, 142, 142);
-	padding: .2rem 0;
-	transition: border-color var(--transition);
-	text-overflow: ellipsis;
+  background: none;
+  border: none;
+  border-bottom: solid 1px rgb(142, 142, 142);
+  padding: .2rem 0;
+  transition: border-color var(--transition);
+  text-overflow: ellipsis;
 }
 
 input:active,
 input:focus,
 input:hover {
-	border-color: var(--color);
+  border-color: var(--color);
 }
 
 input[type="color"] {
-	border: solid 1px rgb(142, 142, 142);
-	padding: 2px;
+  border: solid 1px rgb(142, 142, 142);
+  padding: 2px;
 }
 
 label[for="flip-image"],
 label[for="v-flip-image"] {
-	display: inline-block;
-	width: initial;
+  display: inline-block;
+  width: initial;
 }
 
 label + svg {
-	cursor: pointer;
-	float: right;
-	height: var(--text);
-	vertical-align: bottom;
+  cursor: pointer;
+  float: right;
+  height: var(--text);
+  vertical-align: bottom;
 }
 
 label[data-maxlength]:before {
-	content: attr(data-before);
-	color: red;
-	left: -1.1rem;
-	font-size: .6rem;
-	position: absolute;
-	top: 1.4rem;
+  content: attr(data-before);
+  color: red;
+  left: -1.1rem;
+  font-size: .6rem;
+  position: absolute;
+  top: 1.4rem;
 }
 
 .title-centering,
 .subtitle-centering {
-	display: flex;
-	justify-content: space-between;
-	margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
 }
 
 .title-centering svg,
 .subtitle-centering svg {
-	cursor: pointer;
-	height: .9rem;
-	margin-left: 1rem;
-	transition: fill var(--transition);
+  cursor: pointer;
+  height: .9rem;
+  margin-left: 1rem;
+  transition: fill var(--transition);
 }
 
 label + svg.selected,
 .title-centering svg.selected,
 .subtitle-centering svg.selected {
-	fill: var(--color);
+  fill: var(--color);
 }
 
 button {
-	background-color: transparent;
-	border: solid 2px rgb(142, 142, 142);
-	border-radius: .3rem;
-	color: #3C405D;
-	cursor: pointer;
-	margin-top: calc(var(--padding) / 2);
-	padding: calc(var(--padding) / 2);
-	transition: background-color var(--transition) ease, color var(--transition) ease;
-	width: 100%;
+  background-color: transparent;
+  border: solid 2px rgb(142, 142, 142);
+  border-radius: .3rem;
+  color: #3C405D;
+  cursor: pointer;
+  margin-top: calc(var(--padding) / 2);
+  padding: calc(var(--padding) / 2);
+  transition: background-color var(--transition) ease, color var(--transition) ease;
+  width: 100%;
 }
 
 button#download {
-	background-color: var(--color);
-	color: white;
+  background-color: var(--color);
+  color: white;
 }
 
 button:active,
 button:focus,
 button:hover {
-	background-color: rgb(240, 240, 240);
-	color: #21252B;
+  background-color: rgb(240, 240, 240);
+  color: #21252B;
 }
 
 /* Reponsive rules */
 
 @media screen and (max-width: 1000px) {
-	:root {
-		--title: 1.4rem;
-		--subtitle: 1rem;
-		--text: .8rem;
-		--size: 450px;
-	}
+  :root {
+    /* Global spacing */
+    --margin: 1.5rem;
+    --padding: 1rem;
+    /* Preview dimensions */
+    --size: 500px;
+    --ratio: 1.41421356237; /* sqrt(2) */
+    /* Container dimensions */
+    --title-container: 8rem;
+    /* Text- dimensions */
+    --title: 1.9rem;
+    --title-line-height: 2rem;
+    --subtitle: .8rem;
+    --text: .8rem;
+  }
 
-	body {
-		display: block;
-		padding: var(--padding) 0;
-		text-align: center;
-	}
+  body {
+    display: block;
+    padding: var(--padding) 0;
+    text-align: center;
+  }
 
-	a { /* Hide GitHub ribbon */
-		display: none;
-	}
+  a { /* Hide GitHub ribbon */
+    display: none;
+  }
 
-	h1 {
-		padding: 0 var(--padding);
-	}
+  h1 {
+    padding: 0 var(--padding);
+  }
 
-	.content-wrapper {
-		align-items: center;
-		flex-direction: column;
-		height: auto;
-		margin: var(--margin) auto;
-	}
+  .content-wrapper {
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    margin: var(--margin) auto;
+  }
 
-	.preview-container, .parameters {
-		width: 100%;
-	}
+  .preview-container, .parameters {
+    width: 100%;
+  }
 
-	.parameters {
-		border-radius: 0;
-		max-width: inherit;
-	}
+  .parameters {
+    border-radius: 0;
+    max-width: inherit;
+  }
 
-	input, select {
-		text-align: center;
-	}
+  input, select {
+    text-align: center;
+  }
 
-	label[for="flip-image"],
-	label[for="v-flip-image"] {
-		float: left;
-	}
+  label[for="flip-image"],
+  label[for="v-flip-image"] {
+    float: left;
+  }
 }

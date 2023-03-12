@@ -114,7 +114,7 @@ window.TemplateCover = [
   {
     "color": "#00999D",
     "animal": "pterodactyl",
-    "header": "Your taste, experience, and objectioves are the absolute true",
+    "header": "Your taste, experience, and objectives are the absolute true",
     "title": "Hating on languages you don't use",
     "subtitle": "Be a king"
   },

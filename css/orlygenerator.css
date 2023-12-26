@@ -338,12 +338,9 @@ button:hover {
     text-align: center;
   }
 
-  a { /* Hide GitHub ribbon */
-    display: none;
-  }
-
   h1 {
     padding: 0 var(--padding);
+    margin-top: 3rem; /* So it don't overlap with select lang */
   }
 
   .content-wrapper {

@@ -17,6 +17,6 @@ Since I'm not a drawing artist, I took images from [USF ClipArt ETC](https://etc
 
 You can save your creations thanks to [html2canvas](https://html2canvas.hertzen.com/), which draw DOM elements into a canvas you can use.
 
-If you want to use the downloading feature on a local environment, you may run a web server (`npm install && npm run dev` then open a browser at [https://127.0.0.1:1337/](https://127.0.0.1:1337/)), or disable CORS temporarily on your web browser.
+If you want to use the downloading feature on a local environment, you may run a web server (`npm install && npm run start`) then open a browser at [https://127.0.0.1:1337/](https://127.0.0.1:1337/)).
 
 Tested on Firefox, Chrome and Edge browsers (desktop and mobile).

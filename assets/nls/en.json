@@ -1,6 +1,12 @@
 {
+  "lang": {
+    "en": "🇬🇧 English",
+    "fr": "🇫🇷 French",
+    "es": "🇪🇸 Spanish",
+    "de": "🇩🇪 German"
+  },
   "predefinedColors": "Predefined colors",
-  "customColors": "Custom colors",
+  "customColors": "Custom color",
   "spiritAnimal": "Spirit animal",
   "animals": {
     "none": "None",
@@ -12,7 +18,7 @@
     "butterfly": "Butterfly",
     "cat": "Cat",
     "chameleon": "Chameleon",
-    "chronhist": "Chronhist",
+    "chronectes": "Chronectes",
     "cow": "Cow",
     "crab": "Crab",
     "deer": "Deer",

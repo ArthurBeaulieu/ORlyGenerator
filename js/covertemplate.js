@@ -141,7 +141,7 @@ window.TemplateCover = [
   },
   {
     "color": "#E11105",
-    "animal": "chronhist",
+    "animal": "chronectes",
     "header": "Appreciating the best indentation style",
     "title": "3 space indentation",
     "subtitle": "The only true indent"

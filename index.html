@@ -6,15 +6,22 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <meta content="initial-scale=1" name="viewport">
   <meta name="description" content="Generate a parodic O'Reilley book cover, you know, that nerd meme! Source code available at https://github.com/ArthurBeaulieu/ORlyGenerator">
-  <title>O'Rly Generator – 1.3.2</title>
+  <title>O'Rly Generator – 1.4.0</title>
   <link rel="stylesheet" type="text/css" href="./css/orlygenerator.css">
   <link href="https://raw.githubusercontent.com/ArthurBeaulieu/ArthurBeaulieu/master/assets/img/ab-logo.png" rel="icon" type="image/png">
 </head>
 <!--  O'Rly Generator – from 09/2020          -->
 <!--  GPL-3.0 License                         -->
 <!--  Arthur Beaulieu                         -->
-<!--  Version 1.3.2                           -->
+<!--  Version 1.4.0                           -->
 <body>
+<!-- Language selection -->
+<select id="lang-select" class="lang-select" name="lang-select">
+  <option value="en">{{L_EN}}</option>
+  <option value="fr">{{L_FR}}</option>
+  <option value="es">{{L_ES}}</option>
+  <option value="de">{{L_DE}}</option>
+</select>
 <!-- Title and subtitle -->
 <h1>O'Rly Generator</h1>
 <!-- Page content (output and manipulation) -->
@@ -71,7 +78,7 @@
         <option value="butterfly">🦋 {{A_BUTTERFLY}}</option>
         <option value="cat">🐈 {{A_CAT}}</option>
         <option value="chameleon">🦎 {{A_CHAMELEON}}</option>
-        <option value="chronhist">🐡 {{A_CHRONHIST}}</option>
+        <option value="chronectes">🐡 {{A_CHRONECTES}}</option>
         <option value="cow">🐄 {{A_COW}}</option>
         <option value="crab">🦀 {{A_CRAB}}</option>
         <option value="deer">🦌 {{A_DEER}}</option>
@@ -191,7 +198,7 @@
   </div>
 </div>
 <!-- Credit footer -->
-<p class="credits"><i>O'Rly Generator v1.3.2 – Arthur Beaulieu – 2020/2023</i></p>
+<p class="credits"><i>O'Rly Generator v1.4.0 – Arthur Beaulieu – 2020/2023</i></p>
 <script type="text/javascript" src="js/covertemplate.js"></script>
 <script type="text/javascript" src="js/orlygenerator.js"></script>
 <script async type="text/javascript" src="js/html2canvas.js"></script>

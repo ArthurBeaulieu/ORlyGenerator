@@ -1,14 +1,14 @@
 'use strict';
 
 let nls = {};
-const replaceString = (element, string, value) => {
-  element.innerHTML = element.innerHTML.replace(string, value);
-};
+let appLang = 'en';
+if (localStorage.getItem('lang') !== null) {
+  appLang = localStorage.getItem('lang');
+}
 // Get lang from assets depending on browser lang. default to EN
 const fetchLang = () => {
   return new Promise(resolve => {
-    let browserLang = 'en';
-    fetch(`assets/nls/${browserLang}.json`).then(data => {
+    fetch(`assets/nls/${appLang}.json`).then(data => {
       data.text().then(lang => {
         nls = JSON.parse(lang);
         resolve();
@@ -18,7 +18,16 @@ const fetchLang = () => {
 };
 // Replace all texts that requires translation
 const initLang = () => {
+  // Replace string in HTML dom element with provided value
+  const replaceString = (element, string, value) => {
+    element.innerHTML = element.innerHTML.replace(string, value);
+  };
+
   return new Promise(resolve => {
+    replaceString(document.body, '{{L_FR}}', nls.lang.fr);
+    replaceString(document.body, '{{L_EN}}', nls.lang.en);
+    replaceString(document.body, '{{L_ES}}', nls.lang.es);
+    replaceString(document.body, '{{L_DE}}', nls.lang.de);
     replaceString(document.body, '{{PREDEFINED_COLOR}}', nls.predefinedColors);
     replaceString(document.body, '{{CUSTOM_COLORS}}', nls.customColors);
     replaceString(document.body, '{{SPIRIT_ANIMAL}}', nls.spiritAnimal);
@@ -31,7 +40,7 @@ const initLang = () => {
     replaceString(document.body, '{{A_BUTTERFLY}}', nls.animals.butterfly);
     replaceString(document.body, '{{A_CAT}}', nls.animals.cat);
     replaceString(document.body, '{{A_CHAMELEON}}', nls.animals.chameleon);
-    replaceString(document.body, '{{A_CHRONHIST}}', nls.animals.chronhist);
+    replaceString(document.body, '{{A_CHRONECTES}}', nls.animals.chronectes);
     replaceString(document.body, '{{A_COW}}', nls.animals.cow);
     replaceString(document.body, '{{A_CRAB}}', nls.animals.crab);
     replaceString(document.body, '{{A_DEER}}', nls.animals.deer);
@@ -88,11 +97,27 @@ const initLang = () => {
     replaceString(document.body, '{{SIGNATURE}}', nls.signature);
     replaceString(document.body, '{{RANDOM_COVER}}', nls.randomCover);
     replaceString(document.body, '{{DOWNLOAD}}', nls.download);
+    // Initialize select with proper value
+    const select = document.getElementById('lang-select');
+    for (let i = 0; i < select.options.length; ++i) {
+      if (select.options[i].value === appLang) {
+        select.selectedIndex = i;
+        break;
+      }
+    }
     resolve();
   });
 };
+// Listen to lang update event
+const switchLangEvent = () => {
+  const select = document.getElementById('lang-select');
+  select.addEventListener('change', e => {
+    localStorage.setItem('lang', select.options[select.selectedIndex].value);
+    window.location = '';
+  });
+};
 // We must first ensure lang are loaded and UI is updated before going further
-fetchLang().then(initLang).then(() => {
+fetchLang().then(initLang).then(switchLangEvent).then(() => {
 
   /*  ----------------------------------------  */
   /*  -----------  Utils methods  ------------  */

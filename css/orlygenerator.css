@@ -38,11 +38,12 @@ body {
   justify-content: center;
 }
 
-a img {
-  border: 0;
+.lang-select {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: var(--margin);
+  text-align: left;
+  top: var(--margin);
+  width: 7rem;
 }
 
 h1 {
@@ -173,6 +174,7 @@ sup {
   display: flex;
   justify-content: center;
   margin: var(--margin) 0;
+  min-width: 345px;
   max-width: 445px;
   padding: calc(var(--margin) / 1.3);
   width: 30%;
@@ -316,18 +318,18 @@ button:hover {
 @media screen and (max-width: 1000px) {
   :root {
     /* Global spacing */
-    --margin: 1.5rem;
-    --padding: 1rem;
+    --margin: 1.42857142858rem;
+    --padding: .71428571429rem;
     /* Preview dimensions */
-    --size: 500px;
+    --size: 500px; /* -200px = -28.571428571429% */
     --ratio: 1.41421356237; /* sqrt(2) */
     /* Container dimensions */
-    --title-container: 8rem;
-    /* Text- dimensions */
-    --title: 1.9rem;
-    --title-line-height: 2rem;
-    --subtitle: .8rem;
-    --text: .8rem;
+    --title-container: 8.57142857143rem;
+    /* Text dimensions */
+    --title: 2.14285714286rem;
+    --title-line-height: 2.5rem;
+    --subtitle: 1rem;
+    --text: .71428571429rem;
   }
 
   body {
@@ -348,7 +350,7 @@ button:hover {
     align-items: center;
     flex-direction: column;
     height: auto;
-    margin: var(--margin) auto;
+    margin: var(--margin) auto 0 auto;
   }
 
   .preview-container, .parameters {
@@ -367,5 +369,9 @@ button:hover {
   label[for="flip-image"],
   label[for="v-flip-image"] {
     float: left;
+  }
+
+  .credits {
+    margin-bottom: var(--margin);
   }
 }

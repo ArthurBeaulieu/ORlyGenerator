@@ -100,27 +100,8 @@ fetchLang().then(initLang).then(() => {
 
   // Check wether the browser is a mobile one
   const mobileCheck = () => {
-    let hasTouchScreen = false;
-    if ('maxTouchPoints' in navigator) {
-      hasTouchScreen = navigator.maxTouchPoints > 0;
-    } else if ('msMaxTouchPoints' in navigator) {
-      hasTouchScreen = navigator.msMaxTouchPoints > 0;
-    } else {
-      const mQ = matchMedia?.('(pointer:coarse)');
-      if (mQ?.media === '(pointer:coarse)') {
-        hasTouchScreen = !!mQ.matches;
-      } else if ('orientation' in window) {
-        hasTouchScreen = true; // deprecated, but good fallback
-      } else {
-        // Only as a last resort, fall back to user agent sniffing
-        const UA = navigator.userAgent;
-        hasTouchScreen =
-          /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
-          /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA);
-      }
-    }
-
-    return hasTouchScreen;
+    // Basically, mobile is when CSS mobile breakpoint is hit
+    return window.innerWidth < 1000 ? true : false;
   };
 
   // Method to init field in output and set listener on input
@@ -153,11 +134,11 @@ fetchLang().then(initLang).then(() => {
   const updateTitleSize = text => {
     if (mobileCheck()) {
       if (text.length > 40) {
-        document.body.style.setProperty('--title-container', '10rem');
+        document.body.style.setProperty('--title-container', '11.4285714286rem');
       } else if (text.length > 20) {
-        document.body.style.setProperty('--title-container', '8rem');
+        document.body.style.setProperty('--title-container', '8.57142857143rem');
       } else {
-        document.body.style.setProperty('--title-container', '6rem');
+        document.body.style.setProperty('--title-container', '5.71428571429rem');
       }
     } else {
       if (text.length > 40) {
@@ -230,7 +211,7 @@ fetchLang().then(initLang).then(() => {
     localStorage.setItem('accent-color', element.dataset.value);
   };
 
-  //Image related elements
+  // Image related elements
   const image = document.getElementById('image-animal');
   const imageSelect = document.getElementById('select-image');
   const imageFlip = document.getElementById('flip-image');
@@ -243,8 +224,12 @@ fetchLang().then(initLang).then(() => {
     document.body.style.setProperty('--transition', '0');
     // Execute html2canvas with output div
     html2canvas(document.getElementById('output'), {
-      logging: false, // Make html2canvas silent on execution
-      scale: 4 // Ensure a good output resolution
+      logging: true, // Make html2canvas silent on execution
+      scale: 4, // Ensure a good output resolution
+      height: parseInt(getComputedStyle(document.getElementById('output')).height.slice(0, -2)),
+      width: parseInt(getComputedStyle(document.getElementById('output')).height.slice(0, -2)) / Math.sqrt(2),
+      // Avoid blank scroll on render https://github.com/niklasvh/html2canvas/issues/1878, ORly issue #4
+      scrollX: -window.scrollX, scrollY: -window.scrollY
     }).then(canvas => {
       // Create virtual downloading link
       const link = document.createElement('A');
@@ -257,7 +242,6 @@ fetchLang().then(initLang).then(() => {
 
   const browse = document.getElementById('browse');
   let index = 0;
-
   const browseCovers = () => {
     // Text update
     document.getElementById('preview-header').innerHTML = TemplateCover[index].header;

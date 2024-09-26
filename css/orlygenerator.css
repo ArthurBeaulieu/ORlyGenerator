@@ -115,7 +115,6 @@ p i {
 
 .preview-title-container {
   align-items: center;
-  background-color: var(--color);
   bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
   display: flex;
   height: var(--title-container);
@@ -131,7 +130,9 @@ p i {
 .preview-title-container p {
   color: white;
   font-size: var(--title);
-  line-height: var(--title-line-height)
+  line-height: var(--title-line-height);
+  background-color: var(--color);
+  padding: 30px;
 }
 
 .preview-subtitle-text {

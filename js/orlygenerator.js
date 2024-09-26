@@ -200,11 +200,11 @@ fetchLang().then(initLang).then(switchLangEvent).then(() => {
     const subtitle = document.getElementById('preview-subtitle');
     const align = element.getAttribute('alt').substr(0, element.getAttribute('alt').indexOf('-'));
     if (align[1] === 'l') {
-      subtitle.style.left = 'var(--padding)';
+      subtitle.style.left = 'var(--margin)';
       subtitle.style.right = 'inherit';
     } else if (align[1] === 'r') {
       subtitle.style.left = 'inherit';
-      subtitle.style.right = 'var(--padding)';
+      subtitle.style.right = 'var(--margin)';
     }
     // Align subtitle on top or on bottom of title container
     const titleContainer = document.getElementsByClassName('preview-title-container')[0];

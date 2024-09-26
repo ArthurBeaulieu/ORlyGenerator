@@ -89,7 +89,7 @@ p i {
   background-color: var(--color);
   height: calc(var(--text) / 3);
   margin: 0 auto;
-  width: 90%;
+  width: calc(100% - (2 * var(--margin)));
   transition: background-color var(--transition);
 }
 
@@ -104,7 +104,7 @@ p i {
   display: flex;
   height: calc(100% - var(--title-container) - (var(--text) - var(--text) / 3) - (2 * var(--margin)) + var(--subtitle) - (var(--text) + (2 * var(--margin))));
   justify-content: center;
-  padding: var(--padding);
+  padding: var(--margin);
   width: 100%;
 }
 
@@ -115,15 +115,17 @@ p i {
 
 .preview-title-container {
   align-items: center;
+  background-color: var(--color);
   bottom: calc(var(--text) + (2 * var(--margin)) + var(--subtitle));
   display: flex;
   height: var(--title-container);
   justify-content: left;
+  left: var(--margin);
   margin-bottom: calc(var(--margin) / 4);
   padding: var(--padding) var(--margin);
   position: absolute;
   text-align: left;
-  width: 100%;
+  width: calc(100% - (2 * var(--margin)));
   transition: background-color var(--transition);
 }
 
@@ -131,8 +133,6 @@ p i {
   color: white;
   font-size: var(--title);
   line-height: var(--title-line-height);
-  background-color: var(--color);
-  padding: 30px;
 }
 
 .preview-subtitle-text {

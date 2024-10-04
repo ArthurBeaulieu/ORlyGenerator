@@ -20,3 +20,5 @@ You can save your creations thanks to [html2canvas](https://html2canvas.hertzen.
 If you want to use the downloading feature on a local environment, you may run a web server using `npm install && npm run start`, then open a browser at [https://127.0.0.1:1337/](https://127.0.0.1:1337/).
 
 Tested on Firefox, Chrome and Edge browsers (desktop and mobile).
+
+Many thanks to [vocatan](https://github.com/vocatan) and [ipinak](https://github.com/ipinak) for their contributions!

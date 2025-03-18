@@ -1,6 +1,6 @@
 {
   "name": "orlygenerator",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "O'Reilly books parodic meme generator! You know it right?",
   "scripts": {
     "start": "node js/devserver.js"
@@ -15,9 +15,9 @@
   },
   "author": "Arthur Beaulieu",
   "license": "GPL-3.0",
-  "devDependencies": {},
-  "dependencies": {
-    "compression": "^1.7.4",
-    "express": "^4.21.0"
-  }
+  "devDependencies": {
+    "compression": "^1.8.0",
+    "express": "^4.21.2"
+  },
+  "dependencies": {}
 }

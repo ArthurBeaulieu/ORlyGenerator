@@ -3,7 +3,7 @@ const path = require('path');
 const compression = require('compression');
 const zlib = require('node:zlib');
 // App and preferences
-const version = '1.4.1';
+const version = '1.4.2';
 const port = 1337;
 const app = express();
 // Ensure responses are compressed through this midleware

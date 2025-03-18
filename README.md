@@ -1,6 +1,6 @@
 # O'Rly Generator
 
-![](https://badgen.net/badge/version/1.4.1/blue)
+![](https://badgen.net/badge/version/2/blue)
 [![License](https://img.shields.io/github/license/ArthurBeaulieu/ORlyGenerator.svg)](https://github.com/ArthurBeaulieu/ORlyGenerator/blob/master/LICENSE.md)
 
 Want to make your own nerd O'Rly meme? You know, those ironic book covers that mimic the [O'Reilley](https://www.oreilly.com/) style?
